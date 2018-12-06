@@ -1,6 +1,7 @@
 import logging
 import json
 from .exceptions import *
+
 class Schema():
     '''
         Class for interacting with Solr collections that are using data driven schemas.
@@ -90,7 +91,7 @@ class Schema():
         :param string field_name: String name of the field.
         '''
         schema = self.get_schema_fields(collection)
-        logging.info(schema)
+        self.logger.debug(schema)
         return True if field_name in [field['name'] for field in schema['fields']] else False
 
     def create_copy_field(self,collection,copy_dict):
